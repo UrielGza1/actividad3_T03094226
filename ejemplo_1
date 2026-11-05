@@ -1,0 +1,41 @@
+print("=== Ejercicio 1: Inicia sesión en Roblox ===")
+print("Nombre: Uriel Garza")
+print("Matrícula:  T03094226a")
+print()
+
+# Guardamos el usuario y la contraseña correctos actualizados
+usuario_correcto = "Urielgarza1"
+contrasena_correcta = "roblox123"
+
+# Al inicio todavía NO ha iniciado sesión y tenemos un contador de intentos
+sesion_iniciada = False
+intentos_restantes = 3
+
+# Mientras NO haya iniciado sesión y queden intentos, se repite
+while not sesion_iniciada and intentos_restantes > 0:
+    print(f"Intentos restantes: {intentos_restantes}")
+    
+    # Pedimos el usuario y la contraseña
+    usuario = input("Usuario: ")
+    contrasena = input("Contraseña: ")
+
+    # ¿El usuario es IGUAL al correcto?
+    if usuario == usuario_correcto:
+        # Sí existe. Ahora: ¿la contraseña es IGUAL a la correcta?
+        if contrasena == contrasena_correcta:
+            print(f"✅ ¡Bienvenido, {usuario}!")
+            # Ya entró: esto hace que el while se detenga
+            sesion_iniciada = True
+        else:
+            print("❌ La contraseña es incorrecta")
+            intentos_restantes -= 1
+    else:
+        print("❌ Ese usuario no existe")
+        intentos_restantes -= 1
+    print("-" * 35)
+
+# Esto se ejecuta cuando ya salió del while
+if sesion_iniciada:
+    print("🎮 Cargando tus juegos...")
+else:
+    print("🚫 Acceso bloqueado. Has agotado tus 3 intentos.")
